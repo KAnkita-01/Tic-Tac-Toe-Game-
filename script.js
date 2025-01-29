@@ -4,7 +4,7 @@ let gameOver = false;
 
 const cells = document.querySelectorAll('.cell');
 const resetButton = document.getElementById('resetButton');
-const message = document.getElementById('message');
+const turnMessage = document.getElementById('turn-message');
 
 const winningCombinations = [
     [0, 1, 2],
@@ -23,15 +23,17 @@ function handleClick(event) {
 
     board[index] = currentPlayer;
     event.target.textContent = currentPlayer;
+    event.target.classList.add(currentPlayer.toLowerCase());
 
     if (checkWinner()) {
-        message.textContent = `${currentPlayer} wins!`;
+        turnMessage.textContent = `${currentPlayer} wins! 🎉`;
         gameOver = true;
     } else if (board.every(cell => cell !== '')) {
-        message.textContent = "It's a draw!";
+        turnMessage.textContent = "It's a draw! 🤝";
         gameOver = true;
     } else {
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        turnMessage.textContent = `Player ${currentPlayer}'s Turn`;
     }
 }
 
@@ -46,8 +48,11 @@ function resetGame() {
     board = ['', '', '', '', '', '', '', '', ''];
     currentPlayer = 'X';
     gameOver = false;
-    cells.forEach(cell => cell.textContent = '');
-    message.textContent = '';
+    cells.forEach(cell => {
+        cell.textContent = '';
+        cell.classList.remove('x', 'o');
+    });
+    turnMessage.textContent = `Player ${currentPlayer}'s Turn`;
 }
 
 cells.forEach(cell => {
@@ -55,3 +60,4 @@ cells.forEach(cell => {
 });
 
 resetButton.addEventListener('click', resetGame);
+
