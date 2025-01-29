@@ -1,30 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
-    background-color: #f3f4f6;
 }
 
 .game-container {
-    text-align: center;
-    background-color: white;
+    background-color: #ffffff;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
 }
 
-h1 {
+.game-title {
     font-size: 2rem;
+    color: #4a90e2;
+    margin-bottom: 20px;
 }
 
 .board {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
-    gap: 5px;
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(3, 120px);
+    gap: 10px;
     margin-bottom: 20px;
 }
 
@@ -33,15 +41,30 @@ h1 {
 }
 
 .cell {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
+    background-color: #eaeaea;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
-    border: 1px solid #ccc;
-    background-color: #eaeaea;
+    font-size: 2.5rem;
+    font-weight: bold;
+    border: 2px solid #ccc;
+    border-radius: 8px;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cell:hover {
+    background-color: #d1e7f5;
+}
+
+.cell.x {
+    color: #ff6347; /* Tomato Red for X */
+}
+
+.cell.o {
+    color: #32cd32; /* Lime Green for O */
 }
 
 button {
@@ -53,14 +76,20 @@ button {
     border: none;
     border-radius: 5px;
     margin-top: 20px;
+    transition: background-color 0.3s;
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
-#message {
-    margin-top: 15px;
+.game-info {
     font-size: 1.2rem;
+    margin-top: 10px;
     color: #333;
+}
+
+#turn-message {
+    font-weight: bold;
+    margin-bottom: 15px;
 }
