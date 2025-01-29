@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="game-container">
-        <h1>Tic Tac Toe</h1>
+        <h1 class="game-title">Tic Tac Toe</h1>
         <div class="board">
             <div class="row">
                 <div class="cell" id="cell-0"></div>
@@ -26,8 +26,10 @@
                 <div class="cell" id="cell-8"></div>
             </div>
         </div>
-        <button id="resetButton">Reset Game</button>
-        <div id="message"></div>
+        <div class="game-info">
+            <p id="turn-message">Player X's Turn</p>
+            <button id="resetButton">Reset Game</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
